@@ -1,17 +1,12 @@
-//
-//  AIChatView.swift
-//  WomanProtection
-//
-//  Created by Gözde Civcik on 22.12.2024.
-//
-
-
 import SwiftUI
 
 struct AIChatView: View {
     @State private var userInput: String = ""
     @State private var messages: [String] = ["Merhaba! Nasıl yardımcı olabilirim?"]
-    
+    @State private var errorMessage: String?
+
+    let aiService = AIService()
+
     var body: some View {
         VStack {
             ScrollView {
@@ -24,15 +19,21 @@ struct AIChatView: View {
                             .padding(.vertical, 2)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+
+                    if let errorMessage = errorMessage {
+                        Text("⚠️ \(errorMessage)")
+                            .foregroundColor(.red)
+                            .padding(.top)
+                    }
                 }
             }
             .padding()
-            
+
             HStack {
                 TextField("Sorunuzu yazın...", text: $userInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                
+
                 Button(action: {
                     sendMessage()
                 }) {
@@ -47,12 +48,21 @@ struct AIChatView: View {
         }
         .navigationTitle("AI ile Sohbet")
     }
-    
+
     func sendMessage() {
         guard !userInput.isEmpty else { return }
-        messages.append("Siz: \(userInput)")
-        // Simüle edilmiş bir AI cevabı
-        messages.append("AI: \(userInput) hakkında daha fazla bilgi alıyorum.")
+
+        let prompt = userInput
+        messages.append("Siz: \(prompt)")
         userInput = ""
+        errorMessage = nil
+
+        aiService.getAIResponse(for: prompt) { response in
+            if response.lowercased().contains("❌") {
+                self.errorMessage = response
+            } else {
+                self.messages.append("AI: \(response)")
+            }
+        }
     }
 }
