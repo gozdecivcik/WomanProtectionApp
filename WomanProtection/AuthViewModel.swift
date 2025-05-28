@@ -1,4 +1,5 @@
 import FirebaseAuth
+import FirebaseFirestore
 import Foundation
 
 class AuthViewModel: ObservableObject {
@@ -9,7 +10,6 @@ class AuthViewModel: ObservableObject {
             DispatchQueue.main.async {
                 if let error = error {
                     self.errorMessage = error.localizedDescription
-                    print("🔥 Firebase REGISTER ERROR:", error.localizedDescription)
                     completion(false)
                 } else {
                     completion(true)
@@ -18,16 +18,26 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
+    func login(email: String, password: String, completion: @escaping (Bool, Bool) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             DispatchQueue.main.async {
                 if let error = error {
                     self.errorMessage = error.localizedDescription
-                    completion(false)
+                    completion(false, false)
                 } else {
-                    completion(true)
+                    // Firestore'da profil var mı kontrol et
+                    guard let uid = result?.user.uid else {
+                        completion(true, false)
+                        return
+                    }
+                    let docRef = Firestore.firestore().collection("users").document(uid)
+                    docRef.getDocument { snapshot, error in
+                        let hasProfile = snapshot?.exists ?? false
+                        completion(true, hasProfile)
+                    }
                 }
             }
         }
     }
 }
+

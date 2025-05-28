@@ -23,14 +23,15 @@ struct LoginView: View {
                 .padding(.horizontal)
 
             Button("Giriş Yap") {
-                auth.login(email: email, password: password) { success in
+                auth.login(email: email, password: password) { success, hasProfile in
                     if success {
-                        appState.currentScreen = .profile
+                        appState.currentScreen = hasProfile ? .home : .profile
                     } else {
                         showError = true
                     }
                 }
             }
+
             .frame(maxWidth: .infinity)
             .padding()
             .background(Color.green)

@@ -74,22 +74,9 @@ struct ProfileView: View {
                     }
                 )
             }
-        }
-    }
-
-    func loadData() {
-        if let userData = UserDefaults.standard.dictionary(forKey: "kullaniciBilgileri") as? [String: String] {
-            name = userData["ad"] ?? ""
-            surname = userData["soyad"] ?? ""
-
-            if let birthdayString = userData["dogumTarihi"],
-               let date = ISO8601DateFormatter().date(from: birthdayString) {
-                birthday = date
+            .onAppear {
+                fetchProfileData()
             }
-
-            let gelenKanGrubu = userData["kanGrubu"] ?? ""
-            bloodType = bloodTypes.contains(gelenKanGrubu) ? gelenKanGrubu : bloodTypes.first ?? "A+"
-            address = userData["adres"] ?? ""
         }
     }
 
@@ -126,6 +113,30 @@ struct ProfileView: View {
             }
         }
     }
+
+    func fetchProfileData() {
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(userID)
+
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                let data = document.data() ?? [:]
+                self.name = data["name"] as? String ?? ""
+                self.surname = data["surname"] as? String ?? ""
+                self.address = data["address"] as? String ?? ""
+                self.bloodType = data["bloodType"] as? String ?? ProfileView.bloodTypes.first ?? "A+"
+
+                if let birthdayStr = data["birthday"] as? String,
+                   let date = ISO8601DateFormatter().date(from: birthdayStr) {
+                    self.birthday = date
+                }
+            } else {
+                print("❌ Firestore: Kullanıcı bilgileri bulunamadı.")
+            }
+        }
+    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
@@ -133,3 +144,4 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView().environmentObject(AppState())
     }
 }
+

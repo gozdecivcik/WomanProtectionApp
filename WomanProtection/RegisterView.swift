@@ -7,6 +7,7 @@ struct RegisterView: View {
     @State private var name = ""
     @State private var email = ""
     @State private var password = ""
+    @State private var showSuccessAlert = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -31,9 +32,18 @@ struct RegisterView: View {
             Button("Kayıt Ol") {
                 auth.register(name: name, email: email, password: password) { success in
                     if success {
-                        appState.currentScreen = .profile
+                        showSuccessAlert = true
                     }
                 }
+            }
+            .alert(isPresented: $showSuccessAlert) {
+                Alert(
+                    title: Text("Kayıt Başarılı"),
+                    message: Text("Lütfen giriş yaparak devam edin."),
+                    dismissButton: .default(Text("Giriş Yap")) {
+                        appState.currentScreen = .login
+                    }
+                )
             }
             .frame(maxWidth: .infinity)
             .padding()
