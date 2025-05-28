@@ -1,0 +1,850 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E736841F2DB8399000ED6740 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E736841E2DB8399000ED6740 /* Preview Assets.xcassets */; };
+		E773DA502DB9B127006BBF90 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E773DA4F2DB9B127006BBF90 /* FirebaseAnalytics */; };
+		E773DA522DB9B127006BBF90 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E773DA512DB9B127006BBF90 /* FirebaseAuth */; };
+		E773DA542DB9B127006BBF90 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E773DA532DB9B127006BBF90 /* FirebaseCore */; };
+		E773DA562DB9B127006BBF90 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E773DA552DB9B127006BBF90 /* FirebaseFirestore */; };
+		E773DA582DB9B127006BBF90 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E773DA572DB9B127006BBF90 /* FirebaseStorage */; };
+		E780BC5D2DBBF1DF00680C98 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E780BC5C2DBBF1DF00680C98 /* FirebaseAnalytics */; };
+		E780BC5F2DBBF1DF00680C98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E780BC5E2DBBF1DF00680C98 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		E780BC612DBBF1DF00680C98 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E780BC602DBBF1DF00680C98 /* FirebaseAuth */; };
+		E780BC632DBBF1DF00680C98 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E780BC622DBBF1DF00680C98 /* FirebaseCore */; };
+		E780BC652DBBF1DF00680C98 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E780BC642DBBF1DF00680C98 /* FirebaseFirestore */; };
+		E780BC672DBBF1DF00680C98 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E780BC662DBBF1DF00680C98 /* FirebaseStorage */; };
+		E7B5B5DF2D1D8E2200877801 /* ringtonemp3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7B5B5DE2D1D8E2200877801 /* ringtonemp3.wav */; };
+		E7EA93BD2DBBE69D0034F6DA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93BC2DBBE69D0034F6DA /* FirebaseAnalytics */; };
+		E7EA93BF2DBBE69D0034F6DA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93BE2DBBE69D0034F6DA /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		E7EA93C12DBBE69D0034F6DA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93C02DBBE69D0034F6DA /* FirebaseAuth */; };
+		E7EA93C32DBBE69D0034F6DA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93C22DBBE69D0034F6DA /* FirebaseCore */; };
+		E7EA93C52DBBE69D0034F6DA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93C42DBBE69D0034F6DA /* FirebaseFirestore */; };
+		E7EA93C72DBBE69D0034F6DA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93C62DBBE69D0034F6DA /* FirebaseStorage */; };
+		E7EA93F82DBBEC310034F6DA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93F72DBBEC310034F6DA /* FirebaseAnalytics */; };
+		E7EA93FA2DBBEC310034F6DA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93F92DBBEC310034F6DA /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		E7EA93FC2DBBEC310034F6DA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93FB2DBBEC310034F6DA /* FirebaseAuth */; };
+		E7EA93FE2DBBEC310034F6DA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93FD2DBBEC310034F6DA /* FirebaseCore */; };
+		E7EA94002DBBEC310034F6DA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA93FF2DBBEC310034F6DA /* FirebaseFirestore */; };
+		E7EA94022DBBEC310034F6DA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E7EA94012DBBEC310034F6DA /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E7090A4D2D0F5B8F00F7ADD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7090A342D0F5B8D00F7ADD6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7090A3B2D0F5B8D00F7ADD6;
+			remoteInfo = WomanProtection;
+		};
+		E7090A572D0F5B8F00F7ADD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7090A342D0F5B8D00F7ADD6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7090A3B2D0F5B8D00F7ADD6;
+			remoteInfo = WomanProtection;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E7090A3C2D0F5B8D00F7ADD6 /* WomanProtection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomanProtection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7090A4C2D0F5B8F00F7ADD6 /* WomanProtectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WomanProtectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7090A562D0F5B8F00F7ADD6 /* WomanProtectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WomanProtectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E736841E2DB8399000ED6740 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E7B5B5DE2D1D8E2200877801 /* ringtonemp3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtonemp3.wav; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E7090A872D0F667A00F7ADD6 /* Exceptions for "WomanProtection" folder in "WomanProtection" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E7090A3B2D0F5B8D00F7ADD6 /* WomanProtection */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E7090A3E2D0F5B8D00F7ADD6 /* WomanProtection */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E7090A872D0F667A00F7ADD6 /* Exceptions for "WomanProtection" folder in "WomanProtection" target */,
+			);
+			path = WomanProtection;
+			sourceTree = "<group>";
+		};
+		E7090A4F2D0F5B8F00F7ADD6 /* WomanProtectionTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WomanProtectionTests;
+			sourceTree = "<group>";
+		};
+		E7090A592D0F5B8F00F7ADD6 /* WomanProtectionUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WomanProtectionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E7090A392D0F5B8D00F7ADD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7EA93BD2DBBE69D0034F6DA /* FirebaseAnalytics in Frameworks */,
+				E7EA93FC2DBBEC310034F6DA /* FirebaseAuth in Frameworks */,
+				E780BC632DBBF1DF00680C98 /* FirebaseCore in Frameworks */,
+				E773DA502DB9B127006BBF90 /* FirebaseAnalytics in Frameworks */,
+				E773DA522DB9B127006BBF90 /* FirebaseAuth in Frameworks */,
+				E780BC672DBBF1DF00680C98 /* FirebaseStorage in Frameworks */,
+				E7EA94002DBBEC310034F6DA /* FirebaseFirestore in Frameworks */,
+				E773DA542DB9B127006BBF90 /* FirebaseCore in Frameworks */,
+				E7EA93F82DBBEC310034F6DA /* FirebaseAnalytics in Frameworks */,
+				E7EA93FE2DBBEC310034F6DA /* FirebaseCore in Frameworks */,
+				E7EA93C12DBBE69D0034F6DA /* FirebaseAuth in Frameworks */,
+				E7EA93C72DBBE69D0034F6DA /* FirebaseStorage in Frameworks */,
+				E773DA562DB9B127006BBF90 /* FirebaseFirestore in Frameworks */,
+				E780BC5F2DBBF1DF00680C98 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				E7EA94022DBBEC310034F6DA /* FirebaseStorage in Frameworks */,
+				E7EA93C32DBBE69D0034F6DA /* FirebaseCore in Frameworks */,
+				E780BC652DBBF1DF00680C98 /* FirebaseFirestore in Frameworks */,
+				E773DA582DB9B127006BBF90 /* FirebaseStorage in Frameworks */,
+				E7EA93FA2DBBEC310034F6DA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				E7EA93C52DBBE69D0034F6DA /* FirebaseFirestore in Frameworks */,
+				E780BC5D2DBBF1DF00680C98 /* FirebaseAnalytics in Frameworks */,
+				E780BC612DBBF1DF00680C98 /* FirebaseAuth in Frameworks */,
+				E7EA93BF2DBBE69D0034F6DA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7090A492D0F5B8F00F7ADD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7090A532D0F5B8F00F7ADD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		966304E5E398E2AB63A6A9AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7090A332D0F5B8D00F7ADD6 = {
+			isa = PBXGroup;
+			children = (
+				E7090A3E2D0F5B8D00F7ADD6 /* WomanProtection */,
+				E7090A4F2D0F5B8F00F7ADD6 /* WomanProtectionTests */,
+				E7090A592D0F5B8F00F7ADD6 /* WomanProtectionUITests */,
+				E7090A3D2D0F5B8D00F7ADD6 /* Products */,
+				E7B5B5DE2D1D8E2200877801 /* ringtonemp3.wav */,
+				E736841C2DB8395200ED6740 /* Preview Content */,
+				966304E5E398E2AB63A6A9AA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E7090A3D2D0F5B8D00F7ADD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7090A3C2D0F5B8D00F7ADD6 /* WomanProtection.app */,
+				E7090A4C2D0F5B8F00F7ADD6 /* WomanProtectionTests.xctest */,
+				E7090A562D0F5B8F00F7ADD6 /* WomanProtectionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E736841C2DB8395200ED6740 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E736841E2DB8399000ED6740 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E7090A3B2D0F5B8D00F7ADD6 /* WomanProtection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7090A602D0F5B8F00F7ADD6 /* Build configuration list for PBXNativeTarget "WomanProtection" */;
+			buildPhases = (
+				E7090A382D0F5B8D00F7ADD6 /* Sources */,
+				E7090A392D0F5B8D00F7ADD6 /* Frameworks */,
+				E7090A3A2D0F5B8D00F7ADD6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E7090A3E2D0F5B8D00F7ADD6 /* WomanProtection */,
+			);
+			name = WomanProtection;
+			productName = WomanProtection;
+			productReference = E7090A3C2D0F5B8D00F7ADD6 /* WomanProtection.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E7090A4B2D0F5B8F00F7ADD6 /* WomanProtectionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7090A632D0F5B8F00F7ADD6 /* Build configuration list for PBXNativeTarget "WomanProtectionTests" */;
+			buildPhases = (
+				8E10BE8D8A20573896B1AD18 /* [CP] Check Pods Manifest.lock */,
+				E7090A482D0F5B8F00F7ADD6 /* Sources */,
+				E7090A492D0F5B8F00F7ADD6 /* Frameworks */,
+				E7090A4A2D0F5B8F00F7ADD6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7090A4E2D0F5B8F00F7ADD6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E7090A4F2D0F5B8F00F7ADD6 /* WomanProtectionTests */,
+			);
+			name = WomanProtectionTests;
+			productName = WomanProtectionTests;
+			productReference = E7090A4C2D0F5B8F00F7ADD6 /* WomanProtectionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E7090A552D0F5B8F00F7ADD6 /* WomanProtectionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7090A662D0F5B8F00F7ADD6 /* Build configuration list for PBXNativeTarget "WomanProtectionUITests" */;
+			buildPhases = (
+				30B433F3BE80C3FD1A3EDE5B /* [CP] Check Pods Manifest.lock */,
+				E7090A522D0F5B8F00F7ADD6 /* Sources */,
+				E7090A532D0F5B8F00F7ADD6 /* Frameworks */,
+				E7090A542D0F5B8F00F7ADD6 /* Resources */,
+				C48546EB76B10F2F58ED6482 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7090A582D0F5B8F00F7ADD6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E7090A592D0F5B8F00F7ADD6 /* WomanProtectionUITests */,
+			);
+			name = WomanProtectionUITests;
+			productName = WomanProtectionUITests;
+			productReference = E7090A562D0F5B8F00F7ADD6 /* WomanProtectionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7090A342D0F5B8D00F7ADD6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					E7090A3B2D0F5B8D00F7ADD6 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					E7090A4B2D0F5B8F00F7ADD6 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E7090A3B2D0F5B8D00F7ADD6;
+					};
+					E7090A552D0F5B8F00F7ADD6 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = E7090A3B2D0F5B8D00F7ADD6;
+					};
+				};
+			};
+			buildConfigurationList = E7090A372D0F5B8D00F7ADD6 /* Build configuration list for PBXProject "WomanProtection" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E7090A332D0F5B8D00F7ADD6;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E7090A3D2D0F5B8D00F7ADD6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7090A3B2D0F5B8D00F7ADD6 /* WomanProtection */,
+				E7090A4B2D0F5B8F00F7ADD6 /* WomanProtectionTests */,
+				E7090A552D0F5B8F00F7ADD6 /* WomanProtectionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E7090A3A2D0F5B8D00F7ADD6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E736841F2DB8399000ED6740 /* Preview Assets.xcassets in Resources */,
+				E7B5B5DF2D1D8E2200877801 /* ringtonemp3.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7090A4A2D0F5B8F00F7ADD6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7090A542D0F5B8F00F7ADD6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30B433F3BE80C3FD1A3EDE5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WomanProtection-WomanProtectionUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E10BE8D8A20573896B1AD18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WomanProtectionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C48546EB76B10F2F58ED6482 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WomanProtection-WomanProtectionUITests/Pods-WomanProtection-WomanProtectionUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WomanProtection-WomanProtectionUITests/Pods-WomanProtection-WomanProtectionUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WomanProtection-WomanProtectionUITests/Pods-WomanProtection-WomanProtectionUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E7090A382D0F5B8D00F7ADD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7090A482D0F5B8F00F7ADD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7090A522D0F5B8F00F7ADD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E7090A4E2D0F5B8F00F7ADD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7090A3B2D0F5B8D00F7ADD6 /* WomanProtection */;
+			targetProxy = E7090A4D2D0F5B8F00F7ADD6 /* PBXContainerItemProxy */;
+		};
+		E7090A582D0F5B8F00F7ADD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7090A3B2D0F5B8D00F7ADD6 /* WomanProtection */;
+			targetProxy = E7090A572D0F5B8F00F7ADD6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E7090A5E2D0F5B8F00F7ADD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E7090A5F2D0F5B8F00F7ADD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E7090A612D0F5B8F00F7ADD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = V25HJ829V9;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited)";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WomanProtection/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = come.gozdecivcik.WomanProtection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E7090A622D0F5B8F00F7ADD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = V25HJ829V9;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited)";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WomanProtection/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = come.gozdecivcik.WomanProtection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E7090A642D0F5B8F00F7ADD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = come.gozdecivcik.WomanProtectionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WomanProtection.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WomanProtection";
+			};
+			name = Debug;
+		};
+		E7090A652D0F5B8F00F7ADD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = come.gozdecivcik.WomanProtectionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WomanProtection.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WomanProtection";
+			};
+			name = Release;
+		};
+		E7090A672D0F5B8F00F7ADD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = come.gozdecivcik.WomanProtectionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WomanProtection;
+			};
+			name = Debug;
+		};
+		E7090A682D0F5B8F00F7ADD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = come.gozdecivcik.WomanProtectionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WomanProtection;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E7090A372D0F5B8D00F7ADD6 /* Build configuration list for PBXProject "WomanProtection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7090A5E2D0F5B8F00F7ADD6 /* Debug */,
+				E7090A5F2D0F5B8F00F7ADD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7090A602D0F5B8F00F7ADD6 /* Build configuration list for PBXNativeTarget "WomanProtection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7090A612D0F5B8F00F7ADD6 /* Debug */,
+				E7090A622D0F5B8F00F7ADD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7090A632D0F5B8F00F7ADD6 /* Build configuration list for PBXNativeTarget "WomanProtectionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7090A642D0F5B8F00F7ADD6 /* Debug */,
+				E7090A652D0F5B8F00F7ADD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7090A662D0F5B8F00F7ADD6 /* Build configuration list for PBXNativeTarget "WomanProtectionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7090A672D0F5B8F00F7ADD6 /* Debug */,
+				E7090A682D0F5B8F00F7ADD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E773DA4F2DB9B127006BBF90 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E773DA512DB9B127006BBF90 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E773DA532DB9B127006BBF90 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E773DA552DB9B127006BBF90 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E773DA572DB9B127006BBF90 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		E780BC5C2DBBF1DF00680C98 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E780BC5E2DBBF1DF00680C98 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		E780BC602DBBF1DF00680C98 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E780BC622DBBF1DF00680C98 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E780BC642DBBF1DF00680C98 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E780BC662DBBF1DF00680C98 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		E7EA93BC2DBBE69D0034F6DA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E7EA93BE2DBBE69D0034F6DA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		E7EA93C02DBBE69D0034F6DA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E7EA93C22DBBE69D0034F6DA /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E7EA93C42DBBE69D0034F6DA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E7EA93C62DBBE69D0034F6DA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		E7EA93F72DBBEC310034F6DA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E7EA93F92DBBEC310034F6DA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		E7EA93FB2DBBEC310034F6DA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E7EA93FD2DBBEC310034F6DA /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E7EA93FF2DBBEC310034F6DA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		E7EA94012DBBEC310034F6DA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E773DA4E2DB9B127006BBF90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E7090A342D0F5B8D00F7ADD6 /* Project object */;
+}
