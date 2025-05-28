@@ -70,7 +70,7 @@ struct ProfileView: View {
                     title: Text("Başarılı!"),
                     message: Text("Bilgileriniz kaydedildi."),
                     dismissButton: .default(Text("Tamam")) {
-                        presentationMode.wrappedValue.dismiss()
+                        appState.currentScreen = .home
                     }
                 )
             }
