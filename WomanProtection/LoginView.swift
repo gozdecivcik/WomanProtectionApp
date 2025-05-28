@@ -44,6 +44,13 @@ struct LoginView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
+            Button("Hesabın yok mu? Kayıt ol") {
+                appState.currentScreen = .register
+            }
+            .font(.footnote)
+            .foregroundColor(.blue)
+            .padding(.top, 10)
+
         }
         .padding()
     }
