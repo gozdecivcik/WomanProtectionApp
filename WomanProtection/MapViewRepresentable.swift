@@ -1,66 +1,58 @@
-//
-//  MapViewRepresentable.swift
-//  WomanProtection
-//
-//  Created by Zeynep on 28.05.2025.
-//
-
 import SwiftUI
 import MapKit
 
 struct MapViewRepresentable: UIViewRepresentable {
     @Binding var region: MKCoordinateRegion
     var annotations: [MKPointAnnotation]
-    @Binding var forceCenter: Bool
-    var userLocation: CLLocationCoordinate2D?
+    var userLocation: CLLocationCoordinate2D
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
-        mapView.showsUserLocation = true
-        mapView.delegate = context.coordinator
         mapView.setRegion(region, animated: false)
-
+        mapView.delegate = context.coordinator
+        mapView.showsUserLocation = true
         return mapView
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        // Haritayı manuel olarak merkezle
         uiView.setRegion(region, animated: true)
-
-        if forceCenter, let userLocation = userLocation {
-            let newRegion = MKCoordinateRegion(
-                center: userLocation,
-                span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-            )
-            uiView.setRegion(newRegion, animated: true)
-            DispatchQueue.main.async {
-                forceCenter = false
-            }
-        }
-
         uiView.removeAnnotations(uiView.annotations)
         uiView.addAnnotations(annotations)
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(forceCenter: $forceCenter)
+        Coordinator()
     }
 
     class Coordinator: NSObject, MKMapViewDelegate {
-        @Binding var forceCenter: Bool
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            if annotation is MKUserLocation {
+                return nil
+            }
 
-        init(forceCenter: Binding<Bool>) {
-            _forceCenter = forceCenter
-        }
+            let identifier = "Pin"
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
 
-        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-            // Kullanıcı haritayı oynattıysa otomatik merkezlemeyi iptal et
-            forceCenter = false
+            if view == nil {
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view?.canShowCallout = true
+            } else {
+                view?.annotation = annotation
+            }
+
+            if let subtitle = annotation.subtitle ?? "" {
+                if subtitle.contains("hospital") || subtitle.contains("hastane") {
+                    view?.markerTintColor = .red
+                } else if subtitle.contains("police") || subtitle.contains("karakol") {
+                    view?.markerTintColor = .blue
+                } else {
+                    view?.markerTintColor = .gray
+                }
+            }
+
+            return view
         }
     }
 }
-
-
-
 
 

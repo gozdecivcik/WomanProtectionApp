@@ -5,57 +5,58 @@ struct MapView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var region = MKCoordinateRegion()
     @State private var nearbyPins: [MKPointAnnotation] = []
-    @State private var searchQuery: String = ""
+    @State private var searchQuery = ""
     @FocusState private var isSearchFocused: Bool
-    @State private var forceCenter = true
-
-    @StateObject private var searchCompleter = SearchCompleter()
+    @State private var searchCompleter = SearchCompleter()
     @State private var selectedCompletion: MKLocalSearchCompletion?
 
     var body: some View {
         ZStack(alignment: .top) {
-            if let location = locationManager.userLocation {
+            if let userLocation = locationManager.userLocation {
                 MapViewRepresentable(
                     region: $region,
                     annotations: nearbyPins,
-                    forceCenter: $forceCenter,
-                    userLocation: location
+                    userLocation: userLocation
                 )
                 .onAppear {
-                    if forceCenter {
+                    if region.center.latitude == 0 {
                         region = MKCoordinateRegion(
-                            center: location,
+                            center: userLocation,
                             span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
                         )
+                        fetchNearbyPlaces(location: userLocation)
                     }
-                    fetchNearbyPlaces(query: "hospital OR police", location: location)
                 }
             } else {
                 ProgressView("Konum alınıyor...")
             }
 
             VStack(spacing: 8) {
+                // 🔍 Arama çubuğu
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
 
-                    TextField("Yakındaki yerleri ara...", text: $searchQuery)
+                    TextField("Yer ara...", text: $searchQuery)
                         .focused($isSearchFocused)
-                        .onChange(of: searchQuery) { newValue in
-                            searchCompleter.queryFragment = newValue
+                        .onChange(of: searchQuery) { query in
+                            searchCompleter.queryFragment = query
                         }
                         .onSubmit {
                             searchManually()
                         }
 
-                    Button(action: {
-                        searchQuery = ""
-                        searchCompleter.results = []
-                        isSearchFocused = false
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.gray)
+                    if isSearchFocused {
+                        Button(action: {
+                            searchQuery = ""
+                            searchCompleter.results = []
+                            isSearchFocused = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
+
                 }
                 .padding(12)
                 .background(Color(UIColor.systemGray6))
@@ -63,6 +64,7 @@ struct MapView: View {
                 .padding(.horizontal, 16)
                 .shadow(radius: 4)
 
+                // 🔍 Otomatik tamamlama listesi
                 if isSearchFocused && !searchCompleter.results.isEmpty {
                     List {
                         ForEach(searchCompleter.results, id: \.self) { completion in
@@ -75,7 +77,6 @@ struct MapView: View {
                                         .foregroundColor(.gray)
                                 }
                             }
-                            .contentShape(Rectangle())
                             .onTapGesture {
                                 searchQuery = completion.title
                                 isSearchFocused = false
@@ -92,8 +93,15 @@ struct MapView: View {
             }
             .padding(.top, 32)
 
+            // 📍 Konuma dön butonu
             Button(action: {
-                forceCenter = true
+                if let loc = locationManager.userLocation {
+                    region = MKCoordinateRegion(
+                        center: loc,
+                        span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                    )
+                    fetchNearbyPlaces(location: loc)
+                }
             }) {
                 Image(systemName: "location.fill")
                     .font(.title2)
@@ -102,7 +110,7 @@ struct MapView: View {
             }
             .background(Color.white)
             .clipShape(Circle())
-            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+            .shadow(radius: 4)
             .padding(.bottom, 32)
             .padding(.trailing, 16)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
@@ -112,51 +120,59 @@ struct MapView: View {
 
     func searchFromCompletion(_ completion: MKLocalSearchCompletion) {
         let request = MKLocalSearch.Request(completion: completion)
-        MKLocalSearch(request: request).start { response, error in
+        MKLocalSearch(request: request).start { response, _ in
             guard let coordinate = response?.mapItems.first?.placemark.coordinate else { return }
-            DispatchQueue.main.async {
-                updateRegion(to: coordinate)
-            }
+            region = MKCoordinateRegion(
+                center: coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+            )
         }
     }
 
     func searchManually() {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchQuery
-        MKLocalSearch(request: request).start { response, error in
+        MKLocalSearch(request: request).start { response, _ in
             guard let coordinate = response?.mapItems.first?.placemark.coordinate else { return }
-            DispatchQueue.main.async {
-                updateRegion(to: coordinate)
-            }
+            region = MKCoordinateRegion(
+                center: coordinate,
+                span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+            )
         }
     }
 
-    func updateRegion(to location: CLLocationCoordinate2D) {
-        region = MKCoordinateRegion(
-            center: location,
-            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        )
-    }
+    func fetchNearbyPlaces(location: CLLocationCoordinate2D) {
+        let types = ["hospital", "hastane", "police", "karakol"]
+        var newPins: [MKPointAnnotation] = []
+        let group = DispatchGroup()
 
-    func fetchNearbyPlaces(query: String, location: CLLocationCoordinate2D) {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query
-        request.region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        for type in types {
+            group.enter()
+            let request = MKLocalSearch.Request()
+            request.naturalLanguageQuery = type
+            request.region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
 
-        MKLocalSearch(request: request).start { response, error in
-            guard let items = response?.mapItems else { return }
-            DispatchQueue.main.async {
-                nearbyPins = items.map {
-                    let annotation = MKPointAnnotation()
-                    annotation.title = $0.name
-                    annotation.coordinate = $0.placemark.coordinate
-                    return annotation
+            MKLocalSearch(request: request).start { response, _ in
+                if let items = response?.mapItems {
+                    for item in items {
+                        let distance = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                            .distance(from: CLLocation(latitude: item.placemark.coordinate.latitude, longitude: item.placemark.coordinate.longitude))
+                        if distance <= 5000 {
+                            let annotation = MKPointAnnotation()
+                            annotation.title = item.name
+                            annotation.subtitle = type
+                            annotation.coordinate = item.placemark.coordinate
+                            newPins.append(annotation)
+                        }
+                    }
                 }
+                group.leave()
             }
+        }
+
+        group.notify(queue: .main) {
+            self.nearbyPins = newPins
         }
     }
 }
-
-
-
 
