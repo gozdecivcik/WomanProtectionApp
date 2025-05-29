@@ -3,6 +3,7 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var locationManager = LocationManager()
+    @StateObject private var feedbackVM = FeedbackViewModel()
     @State private var region = MKCoordinateRegion()
     @State private var nearbyPins: [MKPointAnnotation] = []
     @State private var searchQuery = ""
@@ -16,7 +17,8 @@ struct MapView: View {
                 MapViewRepresentable(
                     region: $region,
                     annotations: nearbyPins,
-                    userLocation: userLocation
+                    userLocation: userLocation,
+                    feedbacks: feedbackVM.feedbacks
                 )
                 .onAppear {
                     if region.center.latitude == 0 {
@@ -25,6 +27,8 @@ struct MapView: View {
                             span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
                         )
                         fetchNearbyPlaces(location: userLocation)
+                        feedbackVM.fetchFeedbacks()
+
                     }
                 }
             } else {
