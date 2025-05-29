@@ -7,6 +7,8 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var showError = false
+    @State private var isLoading = false
+
 
     var body: some View {
         VStack(spacing: 20) {
@@ -15,29 +17,43 @@ struct LoginView: View {
                 .bold()
 
             TextField("E-posta", text: $email)
-                .textFieldStyle(.roundedBorder)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+                .customTextFieldStyle()
                 .padding(.horizontal)
 
             SecureField("Parola", text: $password)
-                .textFieldStyle(.roundedBorder)
+                .customTextFieldStyle()
                 .padding(.horizontal)
 
-            Button("Giriş Yap") {
+            Button(action: {
+                isLoading = true
                 auth.login(email: email, password: password) { success, hasProfile in
+                    isLoading = false
                     if success {
                         appState.currentScreen = hasProfile ? .home : .profile
                     } else {
                         showError = true
                     }
                 }
+            }) {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                } else {
+                    Text("Giriş Yap")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                }
             }
-
-            .frame(maxWidth: .infinity)
-            .padding()
             .background(Color.green)
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.horizontal)
+            .disabled(isLoading)
+
 
             if showError || !auth.errorMessage.isEmpty {
                 Text(auth.errorMessage.isEmpty ? "E-posta veya parola yanlış." : auth.errorMessage)
@@ -45,13 +61,13 @@ struct LoginView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
             }
+
             Button("Hesabın yok mu? Kayıt ol") {
                 appState.currentScreen = .register
             }
             .font(.footnote)
             .foregroundColor(.blue)
             .padding(.top, 10)
-
         }
         .padding()
     }

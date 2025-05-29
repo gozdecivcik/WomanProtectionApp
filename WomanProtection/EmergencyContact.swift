@@ -11,4 +11,5 @@ struct EmergencyContact: Identifiable {
     let id = UUID()
     let name: String
     let phoneNumber: String
+    var isFavorite: Bool = false
 }

@@ -16,17 +16,17 @@ struct RegisterView: View {
                 .bold()
 
             TextField("Adınız", text: $name)
-                .textFieldStyle(.roundedBorder)
+                .customTextFieldStyle()
                 .padding(.horizontal)
 
             TextField("E-posta", text: $email)
-                .textFieldStyle(.roundedBorder)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
+                .customTextFieldStyle()
                 .padding(.horizontal)
 
             SecureField("Şifre", text: $password)
-                .textFieldStyle(.roundedBorder)
+                .customTextFieldStyle()
                 .padding(.horizontal)
 
             Button("Kayıt Ol") {

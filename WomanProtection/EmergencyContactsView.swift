@@ -13,19 +13,41 @@ struct EmergencyContactsView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(contacts) { contact in
+                    ForEach(contacts.indices, id: \.self) { index in
+                        let contact = contacts[index]
                         HStack {
                             VStack(alignment: .leading) {
-                                Text(contact.name)
-                                    .font(.headline)
+                                HStack {
+                                    Text(contact.name)
+                                        .font(.headline)
+                                    if contact.isFavorite {
+                                        Image(systemName: "star.fill")
+                                            .foregroundColor(.yellow)
+                                    }
+                                }
                                 Text(contact.phoneNumber)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
                         }
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                deleteContact(at: IndexSet(integer: index))
+                            } label: {
+                                Label("Sil", systemImage: "trash")
+                            }
+                        }
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                toggleFavorite(index: index)
+                            } label: {
+                                Label("Favori", systemImage: "star")
+                            }
+                            .tint(.yellow)
+                        }
                     }
-                    .onDelete(perform: deleteContact)
                 }
+
 
                 HStack {
                     Button(action: {
@@ -79,7 +101,8 @@ struct EmergencyContactsView: View {
         db.collection("users").document(userID).collection("emergencyContacts")
             .addDocument(data: [
                 "name": contact.name,
-                "phoneNumber": contact.phoneNumber
+                "phoneNumber": contact.phoneNumber,
+                "isFavorite": false
             ]) { error in
                 if let error = error {
                     print("🔥 Kişi kaydedilemedi: \(error.localizedDescription)")
@@ -101,10 +124,31 @@ struct EmergencyContactsView: View {
             guard let documents = snapshot?.documents else { return }
 
             self.contacts = documents.map {
-                EmergencyContact(name: $0["name"] as? String ?? "", phoneNumber: $0["phoneNumber"] as? String ?? "")
+                EmergencyContact(
+                    name: $0["name"] as? String ?? "",
+                    phoneNumber: $0["phoneNumber"] as? String ?? "",
+                    isFavorite: $0["isFavorite"] as? Bool ?? false
+                )
             }
         }
     }
+    func toggleFavorite(index: Int) {
+        var contact = contacts[index]
+        contact.isFavorite.toggle()
+        contacts[index] = contact
+
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        let db = Firestore.firestore()
+        let contactRef = db.collection("users").document(userID).collection("emergencyContacts")
+
+        // Mevcut kaydı güncelle (document ID UUID değilse özel logic gerekir!)
+        contactRef.whereField("phoneNumber", isEqualTo: contact.phoneNumber).getDocuments { snapshot, error in
+            if let document = snapshot?.documents.first {
+                document.reference.updateData(["isFavorite": contact.isFavorite])
+            }
+        }
+    }
+
 
     func deleteContact(at offsets: IndexSet) {
         guard let userID = Auth.auth().currentUser?.uid else { return }

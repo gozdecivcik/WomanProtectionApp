@@ -19,6 +19,9 @@ struct HomeView: View {
     @State private var isFakeCallActive = false
     @State private var player: AVAudioPlayer?
     @State private var emergencyContacts: [EmergencyContact] = []
+    @State private var showLogoutConfirmation = false
+    @State private var isLoggingOut = false
+
 
     var body: some View {
         NavigationView {
@@ -87,11 +90,24 @@ struct HomeView: View {
                     .cornerRadius(10)
                 }
             }
+            
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(.systemGray6))
             .edgesIgnoringSafeArea(.all)
             .navigationBarItems(trailing: settingsButton)
             .onAppear(perform: fetchEmergencyContacts)
+            
+            .alert(isPresented: $showLogoutConfirmation) {
+                Alert(
+                    title: Text("Çıkış Yap"),
+                    message: Text("Oturumunuzu kapatmak istediğinizden emin misiniz?"),
+                    primaryButton: .destructive(Text("Evet")) {
+                        performLogout()
+                    },
+                    secondaryButton: .cancel(Text("Hayır"))
+                )
+            }
+
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -104,9 +120,12 @@ struct HomeView: View {
             Button(action: { shareAudioFile() }) {
                 Label("Kaydı Paylaş", systemImage: "square.and.arrow.up")
             }
-            Button(action: { logout() }) {
+            Button(role: .destructive) {
+                showLogoutConfirmation = true
+            } label: {
                 Label("Çıkış", systemImage: "arrow.backward.circle")
             }
+
         } label: {
             Image(systemName: "gearshape.fill")
                 .font(.title3)
@@ -273,6 +292,18 @@ struct HomeView: View {
 
         UIApplication.shared.windows.first?.rootViewController?.present(messageVC, animated: true)
     }
+    
+    func performLogout() {
+        isLoggingOut = true
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            try? Auth.auth().signOut()
+            isLoggingOut = false
+            appState.currentScreen = .login
+            print("Kullanıcı çıkış yaptı.")
+        }
+    }
+
 }
 
 struct HomeView_Previews: PreviewProvider {
