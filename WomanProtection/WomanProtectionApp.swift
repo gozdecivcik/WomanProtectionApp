@@ -17,21 +17,21 @@ struct WomanProtectionApp: App {
     @StateObject private var appState = AppState()
 
     var body: some Scene {
-        WindowGroup {
-            switch appState.currentScreen {
-            case .register:
-                RegisterView()
-                    .environmentObject(appState)
-            case .login:
-                LoginView()
-                    .environmentObject(appState)
-            case .profile:
-                ProfileView()
-                    .environmentObject(appState)
-            case .home:
-                HomeView()
-                    .environmentObject(appState)
+            WindowGroup {
+                if appState.isLoading {
+                    SplashView() // basit bir yükleniyor ekranı göster
+                } else {
+                    switch appState.currentScreen {
+                    case .register:
+                        RegisterView().environmentObject(appState)
+                    case .login:
+                        LoginView().environmentObject(appState)
+                    case .profile:
+                        ProfileView().environmentObject(appState)
+                    case .home:
+                        HomeView().environmentObject(appState)
+                    }
+                }
             }
         }
-    }
 }

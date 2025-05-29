@@ -4,6 +4,7 @@ import FirebaseFirestore
 
 class AppState: ObservableObject {
     @Published var currentScreen: Screen = .login
+    @Published var isLoading: Bool = true
 
     enum Screen {
         case register
@@ -13,22 +14,24 @@ class AppState: ObservableObject {
     }
 
     init() {
-        if let user = Auth.auth().currentUser {
-            let docRef = Firestore.firestore().collection("users").document(user.uid)
-            docRef.getDocument { snapshot, _ in
-                DispatchQueue.main.async {
-                    if snapshot?.exists == true {
-                        self.currentScreen = .home
-                    } else {
-                        self.currentScreen = .profile
+            if let user = Auth.auth().currentUser {
+                let docRef = Firestore.firestore().collection("users").document(user.uid)
+                docRef.getDocument { snapshot, _ in
+                    DispatchQueue.main.async {
+                        if snapshot?.exists == true {
+                            self.currentScreen = .home
+                        } else {
+                            self.currentScreen = .profile
+                        }
+                        self.isLoading = false
                     }
                 }
+            } else {
+                self.currentScreen = .register
+                self.isLoading = false
             }
-            self.currentScreen = .login // geçici, async biterken görünürlük için
-        } else {
-            self.currentScreen = .register
         }
-    }
+    
 
     func checkIfProfileExists() {
         guard let userID = Auth.auth().currentUser?.uid else {
