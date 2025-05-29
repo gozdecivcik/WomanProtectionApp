@@ -52,7 +52,9 @@ struct HomeView: View {
                     featureButton(image: "mappin.and.ellipse", title: "Merkezler") {
                         showEmergencyCenters = true
                     }.sheet(isPresented: $showEmergencyCenters) {
-                        EmergencyCentersView().environmentObject(appState)
+                        MapView()
+                            .presentationDetents([.large])
+                                    .presentationDragIndicator(.visible)
                     }
 
                     featureButton(image: "phone.fill.arrow.up.right", title: "Yalancı Arama") {
