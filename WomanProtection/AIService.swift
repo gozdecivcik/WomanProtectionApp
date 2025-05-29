@@ -1,11 +1,11 @@
 import Foundation
 
 class AIService {
-    let apiKey = "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" // 🔐 Buraya OpenRouter API anahtarını yaz
-
+    let apiKey = "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" // 🔐 Buraya OpenRouter API anahtarını yaz
+    
     func getAIResponse(for prompt: String, completion: @escaping (String) -> Void) {
         guard let url = URL(string: "https://openrouter.ai/api/v1/chat/completions") else {
-            completion("Geçersiz URL.")
+            completion("❌ Geçersiz URL.")
             return
         }
 
@@ -15,8 +15,9 @@ class AIService {
         ]
 
         let body: [String: Any] = [
-            "model": "mistralai/mistral-7b-instruct", // İstersen başka model kullanabilirsin
+            "model": "deepseek/deepseek-r1:free", // alternatif: "openai/gpt-3.5-turbo"
             "messages": [
+                ["role": "system", "content": "Kısa, net ve güvenli cevaplar ver. Panikleyen birine yardımcı oluyorsun."],
                 ["role": "user", "content": prompt]
             ]
         ]
@@ -28,7 +29,7 @@ class AIService {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
-            completion("❌ JSON hatası: \(error.localizedDescription)")
+            completion("❌ JSON oluşturulamadı: \(error.localizedDescription)")
             return
         }
 
@@ -39,7 +40,7 @@ class AIService {
             }
 
             guard let data = data else {
-                completion("❌ Sunucudan boş veri geldi.")
+                completion("❌ Boş veri döndü.")
                 return
             }
 
@@ -52,12 +53,11 @@ class AIService {
                         completion(content.trimmingCharacters(in: .whitespacesAndNewlines))
                     }
                 } else {
-                    let rawText = String(data: data, encoding: .utf8) ?? "Veri okunamadı"
-                    completion("❌ Yanıt işlenemedi:\n\(rawText)")
+                    let raw = String(data: data, encoding: .utf8) ?? "Yanıt okunamadı."
+                    completion("❌ Beklenmeyen yanıt formatı:\n\(raw)")
                 }
             } catch {
                 completion("❌ Parse hatası: \(error.localizedDescription)")
             }
         }.resume()
-    }
-}
+    } }
