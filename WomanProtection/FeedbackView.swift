@@ -10,6 +10,9 @@ struct FeedbackView: View {
     @State private var selectedImage: UIImage?
     @State private var shareLocation: Bool = false
 
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+
     var body: some View {
         VStack {
             Form {
@@ -21,7 +24,7 @@ struct FeedbackView: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                 }
-                
+
                 Section(header: Text("Konum Bilgisi")) {
                     if shareLocation {
                         Text("Konum paylaşımı açık.")
@@ -30,13 +33,13 @@ struct FeedbackView: View {
                         TextField("Konumunuzu manuel olarak yazın", text: $locationText)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
-                    
+
                     Toggle(isOn: $shareLocation) {
                         Text("Konumumu Otomatik Paylaş")
                     }
                 }
-                
-                Section(header: Text("Fotoğraf Ekle")) {
+
+                Section(header: Text("Fotoğraf Ekle (İsteğe Bağlı)")) {
                     if let selectedImage = selectedImage {
                         Image(uiImage: selectedImage)
                             .resizable()
@@ -45,7 +48,7 @@ struct FeedbackView: View {
                             .cornerRadius(10)
                             .padding(.vertical)
                     }
-                    
+
                     PhotosPicker(selection: $selectedPhoto, matching: .images) {
                         Text("Fotoğraf Seç")
                             .frame(maxWidth: .infinity)
@@ -56,9 +59,11 @@ struct FeedbackView: View {
                     }
                 }
             }
-            
+
             Button(action: {
-                submitFeedback()
+                if validateForm() {
+                    submitFeedback()
+                }
             }) {
                 Text("Gönder")
                     .frame(maxWidth: .infinity)
@@ -67,18 +72,37 @@ struct FeedbackView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
-            .disabled(feedbackText.isEmpty && locationText.isEmpty && selectedImage == nil)
             .padding()
         }
         .navigationTitle("Geri Bildirim")
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Uyarı"), message: Text(alertMessage), dismissButton: .default(Text("Tamam")))
+        }
         .onChange(of: selectedPhoto) { newValue in
             loadImage(from: newValue)
         }
     }
-    
+
+    func validateForm() -> Bool {
+        if feedbackText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            alertMessage = "Lütfen açıklama girin."
+            showAlert = true
+            return false
+        }
+
+        if !shareLocation && locationText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            alertMessage = "Lütfen konumunuzu girin veya otomatik paylaşımı açın."
+            showAlert = true
+            return false
+        }
+
+        return true
+    }
+
     func submitFeedback() {
         guard let userID = Auth.auth().currentUser?.uid else {
-            print("Kullanıcı oturumu yok.")
+            alertMessage = "Kullanıcı oturumu bulunamadı."
+            showAlert = true
             return
         }
 
@@ -89,22 +113,23 @@ struct FeedbackView: View {
 
         if shareLocation {
             feedbackData["location"] = "Otomatik konum paylaşımı aktif"
-        } else if !locationText.isEmpty {
+        } else {
             feedbackData["location"] = locationText
         }
 
         if let selectedImage = selectedImage,
            let imageData = selectedImage.jpegData(compressionQuality: 0.7) {
-            let base64String = imageData.base64EncodedString()
-            feedbackData["imageBase64"] = base64String
+            feedbackData["imageBase64"] = imageData.base64EncodedString()
         }
 
         let db = Firestore.firestore()
         db.collection("users").document(userID).collection("feedbacks").addDocument(data: feedbackData) { error in
             if let error = error {
-                print("Geri bildirim gönderilemedi: \(error.localizedDescription)")
+                alertMessage = "Gönderilemedi: \(error.localizedDescription)"
+                showAlert = true
             } else {
-                print("✅ Geri bildirim başarıyla gönderildi.")
+                alertMessage = "Geri bildirim kaydedildi ✅"
+                showAlert = true
                 feedbackText = ""
                 locationText = ""
                 selectedImage = nil
@@ -116,7 +141,7 @@ struct FeedbackView: View {
 
     func loadImage(from item: PhotosPickerItem?) {
         guard let item = item else { return }
-        
+
         item.loadTransferable(type: Data.self) { result in
             switch result {
             case .success(let data):
@@ -131,3 +156,4 @@ struct FeedbackView: View {
         }
     }
 }
+
