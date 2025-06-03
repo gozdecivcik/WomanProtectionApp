@@ -264,10 +264,16 @@ struct HomeView: View {
                 let data = doc.data()
                 guard let name = data["name"] as? String,
                       let phoneNumber = data["phoneNumber"] as? String else { return nil }
-                return EmergencyContact(name: name, phoneNumber: phoneNumber)
+                return EmergencyContact(
+                    id: doc.documentID, 
+                    name: name,
+                    phoneNumber: phoneNumber,
+                    isFavorite: data["isFavorite"] as? Bool ?? false
+                )
             } ?? []
         }
     }
+
 
     func showEmergencySMS() {
         guard MFMessageComposeViewController.canSendText() else {

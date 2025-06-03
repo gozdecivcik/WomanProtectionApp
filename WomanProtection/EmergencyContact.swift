@@ -5,11 +5,11 @@
 //  Created by Gözde Civcik on 18.12.2024.
 //
 
-import Foundation
-
 struct EmergencyContact: Identifiable {
-    let id = UUID()
+    let id: String // Firestore document ID
     let name: String
     let phoneNumber: String
-    var isFavorite: Bool = false
+    var isFavorite: Bool
 }
+
+

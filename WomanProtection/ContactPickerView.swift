@@ -1,10 +1,3 @@
-//
-//  ContactPickerView.swift
-//  WomanProtection
-//
-//  Created by Gözde Civcik on 18.12.2024.
-//
-
 import SwiftUI
 import ContactsUI
 
@@ -33,10 +26,13 @@ struct ContactPickerView: UIViewControllerRepresentable {
         func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
             guard let phoneNumber = contact.phoneNumbers.first?.value.stringValue else { return }
             let emergencyContact = EmergencyContact(
+                id: UUID().uuidString, // geçici ID, firestore'a eklenince gerçek ID ile değiştirilecek
                 name: "\(contact.givenName) \(contact.familyName)",
-                phoneNumber: phoneNumber
+                phoneNumber: phoneNumber,
+                isFavorite: false
             )
             onSelect(emergencyContact)
         }
     }
 }
+

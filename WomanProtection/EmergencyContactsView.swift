@@ -48,7 +48,6 @@ struct EmergencyContactsView: View {
                     }
                 }
 
-
                 HStack {
                     Button(action: {
                         showingContactPicker = true
@@ -125,6 +124,7 @@ struct EmergencyContactsView: View {
 
             self.contacts = documents.map {
                 EmergencyContact(
+                    id: $0.documentID,
                     name: $0["name"] as? String ?? "",
                     phoneNumber: $0["phoneNumber"] as? String ?? "",
                     isFavorite: $0["isFavorite"] as? Bool ?? false
@@ -132,23 +132,22 @@ struct EmergencyContactsView: View {
             }
         }
     }
+
     func toggleFavorite(index: Int) {
-        var contact = contacts[index]
-        contact.isFavorite.toggle()
-        contacts[index] = contact
-
+        let contact = contacts[index]
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        let db = Firestore.firestore()
-        let contactRef = db.collection("users").document(userID).collection("emergencyContacts")
 
-        // Mevcut kaydı güncelle (document ID UUID değilse özel logic gerekir!)
-        contactRef.whereField("phoneNumber", isEqualTo: contact.phoneNumber).getDocuments { snapshot, error in
-            if let document = snapshot?.documents.first {
-                document.reference.updateData(["isFavorite": contact.isFavorite])
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(userID).collection("emergencyContacts").document(contact.id)
+
+        ref.updateData(["isFavorite": !contact.isFavorite]) { error in
+            if let error = error {
+                print("❌ Favori güncellenemedi: \(error.localizedDescription)")
+            } else {
+                contacts[index].isFavorite.toggle()
             }
         }
     }
-
 
     func deleteContact(at offsets: IndexSet) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
@@ -156,12 +155,14 @@ struct EmergencyContactsView: View {
 
         offsets.forEach { index in
             let contact = contacts[index]
-            db.collection("users").document(userID).collection("emergencyContacts").document(contact.id.uuidString).delete { error in
+            db.collection("users").document(userID).collection("emergencyContacts").document(contact.id).delete { error in
                 if let error = error {
                     print("🔥 Kişi silinemedi: \(error.localizedDescription)")
                 }
             }
         }
+
         contacts.remove(atOffsets: offsets)
     }
 }
+

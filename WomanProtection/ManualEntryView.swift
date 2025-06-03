@@ -1,9 +1,3 @@
-//
-//  ManualEntryView.swift
-//  WomanProtection
-//
-//  Created by Gözde Civcik on 18.12.2024.
-//
 import SwiftUI
 
 struct ManualEntryView: View {
@@ -20,14 +14,21 @@ struct ManualEntryView: View {
                     .keyboardType(.phonePad)
             }
             .navigationBarTitle("Kişi Ekle", displayMode: .inline)
-            .navigationBarItems(leading: Button("İptal") {
-                presentationMode.wrappedValue.dismiss()
-            }, trailing: Button("Kaydet") {
-                let newContact = EmergencyContact(name: name, phoneNumber: phoneNumber)
-                onSave(newContact)
-                presentationMode.wrappedValue.dismiss()
-            }.disabled(name.isEmpty || phoneNumber.isEmpty))
+            .navigationBarItems(
+                leading: Button("İptal") {
+                    presentationMode.wrappedValue.dismiss()
+                },
+                trailing: Button("Kaydet") {
+                    let newContact = EmergencyContact(
+                        id: UUID().uuidString, // geçici ID, Firestore'a eklenince gerçek ID ile değiştirilecek
+                        name: name,
+                        phoneNumber: phoneNumber,
+                        isFavorite: false
+                    )
+                    onSave(newContact)
+                    presentationMode.wrappedValue.dismiss()
+                }.disabled(name.isEmpty || phoneNumber.isEmpty)
+            )
         }
     }
 }
-
