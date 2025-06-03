@@ -142,12 +142,19 @@ struct HomeView: View {
     }
 
     func handleEmergencyCall() {
-        startRecording()
-        callEmergencyNumber()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            showEmergencySMS()
+        if isRecording {
+            stopRecording()
+            print("🎙 Ses kaydı durduruldu.")
+        } else {
+            startRecording()
+            callEmergencyNumber()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                showEmergencySMS()
+            }
         }
     }
+
 
     func callEmergencyNumber() {
         if let url = URL(string: "tel://112"), UIApplication.shared.canOpenURL(url) {
@@ -277,11 +284,22 @@ struct HomeView: View {
 
     func showEmergencySMS() {
         guard MFMessageComposeViewController.canSendText() else {
-            print("SMS gönderilemiyor.")
+            print("❌ Bu cihaz SMS gönderemiyor.")
             return
         }
 
-        let phoneNumbers = emergencyContacts.map { $0.phoneNumber }
+        // ✅ Sadece favori kişiler
+        let favoriteContacts = emergencyContacts.filter { $0.isFavorite }
+        
+        guard !favoriteContacts.isEmpty else {
+            print("📭 Favori acil durum kişisi yok.")
+            return
+        }
+
+        let phoneNumbers = emergencyContacts
+            .filter { $0.isFavorite }  // ✅ sadece favori kişiler
+            .map { $0.phoneNumber }
+
         let lat = locationManager.userLocation?.latitude ?? 0.0
         let lon = locationManager.userLocation?.longitude ?? 0.0
         let mapsLink = "https://maps.google.com/?q=\(lat),\(lon)"
@@ -294,11 +312,17 @@ struct HomeView: View {
         let messageVC = MFMessageComposeViewController()
         messageVC.body = messageBody
         messageVC.recipients = phoneNumbers
-        messageVC.messageComposeDelegate = UIApplication.shared.windows.first?.rootViewController as? MFMessageComposeViewControllerDelegate
+        messageVC.messageComposeDelegate = SMSDelegate.shared
 
-        UIApplication.shared.windows.first?.rootViewController?.present(messageVC, animated: true)
+        if let rootVC = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .flatMap({ $0.windows })
+            .first(where: { $0.isKeyWindow })?
+            .rootViewController {
+            rootVC.present(messageVC, animated: true)
+        }
     }
-    
+
     func performLogout() {
         isLoggingOut = true
 

@@ -130,6 +130,8 @@ struct EmergencyContactsView: View {
                     isFavorite: $0["isFavorite"] as? Bool ?? false
                 )
             }
+            .sorted { $0.isFavorite && !$1.isFavorite } // 💥 Favoriler en üste
+
         }
     }
 
@@ -144,10 +146,21 @@ struct EmergencyContactsView: View {
             if let error = error {
                 print("❌ Favori güncellenemedi: \(error.localizedDescription)")
             } else {
+                // Liste içindeki favorilik durumu güncelleniyor
                 contacts[index].isFavorite.toggle()
+
+                // 🧠 Liste yeniden sıralanıyor
+                contacts.sort {
+                    if $0.isFavorite == $1.isFavorite {
+                        return $0.name < $1.name // aynı favorilik varsa alfabetik sırala (opsiyonel)
+                    }
+                    return $0.isFavorite && !$1.isFavorite
+                }
             }
         }
     }
+
+    
 
     func deleteContact(at offsets: IndexSet) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
