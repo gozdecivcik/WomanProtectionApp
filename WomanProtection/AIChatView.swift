@@ -4,6 +4,12 @@ struct AIChatView: View {
     @State private var userInput: String = ""
     @State private var messages: [(String, Bool)] = [("Merhaba! Size nasıl yardımcı olabilirim?", false)]
     @State private var errorMessage: String?
+    @State private var predefinedMessages: [String] = [
+        "Biri beni takip ediyor, ne yapmalıyım?",
+        "Trafikte biri bana küfür ediyor ve saldırıyor, ne yapmalıyım?",
+        "Evde yalnızım ve kapı çalıyor, korkuyorum ne yapmalıyım?",
+        "Birinden tehdit mesajı aldım, ne yapmalıyım?"
+    ]
 
     let aiService = AIService()
 
@@ -29,6 +35,28 @@ struct AIChatView: View {
                                 .foregroundColor(.red)
                                 .padding(.horizontal)
                         }
+
+                        // 🔘 Hazır Mesajlar
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Hazır Yardım Mesajları:")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+
+                            ForEach(predefinedMessages, id: \.self) { message in
+                                Button(action: {
+                                    userInput = message
+                                    sendMessage()
+                                }) {
+                                    Text(message)
+                                        .padding(10)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .background(Color(.secondarySystemBackground))
+                                        .foregroundColor(.primary)
+                                        .cornerRadius(10)
+                                }
+                            }
+                        }
+                        .padding(.top)
                     }
                     .padding()
                     .onChange(of: messages.count) { _ in

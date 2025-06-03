@@ -1,8 +1,9 @@
 import Foundation
 
 class AIService {
-    let apiKey = "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" // 🔐 Buraya OpenRouter API anahtarını yaz
+    let apiKey = "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" // 🔐 Buraya OpenRouter API anahtarını yaz
     
+  
     func getAIResponse(for prompt: String, completion: @escaping (String) -> Void) {
         guard let url = URL(string: "https://openrouter.ai/api/v1/chat/completions") else {
             completion("❌ Geçersiz URL.")
@@ -15,7 +16,7 @@ class AIService {
         ]
 
         let body: [String: Any] = [
-            "model": "deepseek/deepseek-r1:free", // alternatif: "openai/gpt-3.5-turbo"
+            "model": "deepseek/deepseek-r1-0528:free",
             "messages": [
                 ["role": "system", "content": "Kısa, net ve güvenli cevaplar ver. Panikleyen birine yardımcı oluyorsun."],
                 ["role": "user", "content": prompt]
@@ -60,4 +61,5 @@ class AIService {
                 completion("❌ Parse hatası: \(error.localizedDescription)")
             }
         }.resume()
-    } }
+    }
+}
