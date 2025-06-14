@@ -1,7 +1,7 @@
 import Foundation
 
 class AIService {
-    let apiKey = "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" // 🔐 Buraya OpenRouter API anahtarını yaz
+    let apiKey = "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" // 🔐 Buraya OpenRouter API anahtarını yaz
     
   
     func getAIResponse(for prompt: String, completion: @escaping (String) -> Void) {
